@@ -13,17 +13,14 @@ function App() {
         {id:4, title:'Javascript C', body:'JavaScript description 3'},
     ])
 
-    const [posts1, setPosts1] = useState([
-        {id:1, title:'Python', body:'Python description'},
-        {id:2, title:'Python A', body:'Python description 1'},
-        {id:3, title:'Python B', body:'Python description 2'},
-        {id:4, title:'Python C', body:'Python description 3'},
-    ])
+
 
     return (
         <div className="App">
+            <input type='text' placeholder='název zprávy'/>
+            <input type='text' placeholder='popis zprávy' />
+            <button>Vytvořit zprávu</button>
             <PostList posts={posts} title='Seznam zpráv o JavaScriptu' />
-            <PostList posts={posts1} title='Seznam zpráv o Pythonu' />
         </div>
     )
 
