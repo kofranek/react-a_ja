@@ -16,7 +16,8 @@ function App() {
     ])
 
     const [title, setTitle] = useState('')
-    const addNewPost = () =>{
+    const addNewPost = (e) =>{
+        e.preventDefault()
         console.log('title=',title)
     }
 
@@ -31,7 +32,7 @@ function App() {
                 placeholder='název zprávy'
             />
             <MyInput type='text' placeholder='popis zprávy' />
-            <MyButton onClick={addNewPost}>Vytvořit zprávu</MyButton>
+            <MyButton type='submit' onClick={addNewPost}>Vytvořit zprávu</MyButton>
             <PostList posts={posts} title='Seznam zpráv o JavaScriptu' />
         </div>
     )
