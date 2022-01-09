@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import ClassCounter from './components/ClassCounter';
 import Counter from './components/Counter'
 import './styles/App.css'
@@ -16,9 +16,16 @@ function App() {
     ])
 
     const [title, setTitle] = useState('')
+
+    const bodyInputRef = useRef()
+
+
     const addNewPost = (e) =>{
         e.preventDefault()
         console.log('title=',title)
+        console.log('bodyInputRef=',bodyInputRef)
+        console.log('bodyInputRef.current=',bodyInputRef.current)
+        console.log('bodyInputRef.current.value=',bodyInputRef.current.value)
     }
 
 
@@ -31,7 +38,18 @@ function App() {
                 type='text'
                 placeholder='název zprávy'
             />
-            <MyInput type='text' placeholder='popis zprávy' />
+
+            {/*<input */}
+            {/*    ref={bodyInputRef} */}
+            {/*    type='text'  */}
+            {/*/>*/}
+
+            {/*Neřízená komponenta*/}
+            <MyInput
+                ref={bodyInputRef}
+                type='text'
+                placeholder='popis zprávy'
+            />
             <MyButton type='submit' onClick={addNewPost}>Vytvořit zprávu</MyButton>
             <PostList posts={posts} title='Seznam zpráv o JavaScriptu' />
         </div>
