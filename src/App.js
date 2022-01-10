@@ -15,25 +15,16 @@ function App() {
         {id: 4, title: 'Javascript C', body: 'JavaScript description 3'},
     ])
 
-    const [title, setTitle] = useState('')
-    const [body, setBody] = useState('')
-
-    const bodyInputRef = useRef()
+    const [post, setPost] = useState({title: '', body: ''})
 
 
     const addNewPost = (e) => {
         e.preventDefault()
-        const newPost = {
-            id: Date.now(),
-            title,
-            body
+        if (post.title && post.body) {
+            setPosts([...posts, {...post, id: Date.now()}])
+            setPost({title: '', body: ''})
         }
-        if (newPost.title && newPost.body) {
-            setPosts([...posts, newPost])
-            setTitle('')
-            setBody('')
-        }
-        console.log('newPost=', newPost)
+        console.log('post=', post)
         console.log('posts=', posts)
 
     }
@@ -43,15 +34,15 @@ function App() {
         <div className="App">
             {/*řízená komponenta*/}
             <MyInput
-                value={title}
-                onChange={e => setTitle(e.target.value)}
+                value={post.title}
+                onChange={e => setPost({...post, title: e.target.value})}
                 type='text'
                 placeholder='název zprávy'
             />
 
             <MyInput
-                value={body}
-                onChange={e => setBody(e.target.value)}
+                value={post.body}
+                onChange={e => setPost({...post, body: e.target.value})}
                 type='text'
                 placeholder='popis zprávy'
             />
